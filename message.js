@@ -3,7 +3,7 @@ var http=require('http');
 var qs=require('qs');
 var replyText=require('./reply.js').replyText;
 var TOKEN = 'hahaha';
-var getUserInfo=require('/user.js').getUserInfo;
+var getUserInfo=require('./user.js').getUserInfo;
 
 var fs = require('fs')
     , http = require('http')
