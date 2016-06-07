@@ -1,5 +1,5 @@
 var appID = require('port').appID;
-var appSecret = require('port').appSecret;
+var appSecret = require('./port').appSecret;
 var getToken = require('token').getToken;
 var request = require('request');
 
