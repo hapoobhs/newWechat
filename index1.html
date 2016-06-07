@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wx client</title>
+  <style>
+    li {
+      width: 300px;
+	   height:60px;
+	
+	   margin-bottom:20px;
+	   
+    }
+	li> img{
+	 width: 70px;
+	  height:60px;
+	  border-style: outset;
+	  margin-bottom:9px;
+	  vertical-align: middle; 
+	  display: inline-block;
+	}
+	
+  .STYLE2 {font-family: "宋体"}
+  .STYLE4 {
+	font-size: 24px;
+	text-align: center;
+	font-weight: bold;
+}
+  .STYLE5 {color: #FFFFFF}
+  </style>
+</head>
+
+<body bgcolor='#333333'>
+
+ 
+<h><div align="center" class="STYLE2">
+  <p class="STYLE4"><span class="STYLE5">欢迎上墙</span></p>
+  </div>
+</h>
+
+<div id="wrapper" style="background-color: #FFCCFF; height: auto; padding: 10; width: 804px; position: absolute; left: 253px; top: 72px; border-style: outset; border-width: 5px;border-color: #CCCCFF; visibility:hidden">
+  
+  <ul id="messages">
+
+  </ul>
+</div>
+<script src="http://123.206.77.116:9902/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/json3/3.3.2/json3.min.js"></script>
+<script type="text/javascript">
+  var msglist = document.getElementById('messages');
+  var socket = io.connect('http://123.206.77.116:9902/');
+  //var ws = new WebSocket('ws://123.206.77.116:9902/');
+  socket.on('message',function(json){
+//alert(json.xml.Content[0]);
+    //console.log(json.xml.Content[0]);
+    //var msg = json;
+
+    var content = json.xml.Content[0];
+    json.user = json.user || {};
+    var userName = json.user.nickname;
+    var headimg = json.user.headimgurl;
+   document.getElementById('wrapper').style.visibility="visible";
+    var oLi = document.createElement('li');
+    oLi.innerHTML = userName + '<img src="'+headimg+'">' + ':' +content;
+    msglist.appendChild(oLi);
+
+  });
+</script>
+</body>
+</html>
