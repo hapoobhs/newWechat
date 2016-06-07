@@ -1,6 +1,6 @@
-var appID = require('port').appID;
+var appID = require('./port').appID;
 var appSecret = require('./port').appSecret;
-var getToken = require('token').getToken;
+var getToken = require('./token').getToken;
 var request = require('request');
 
 function getUserInfo(openID){
